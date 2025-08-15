@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>地铁跑酷公益直充</title> <!-- 标题也同步改成地铁跑酷公益直充 -->
+    <title>地铁跑酷公益直充</title> 
     <style>
         * {
             margin: 0;
@@ -50,6 +50,8 @@
             border: 1px solid rgba(33,150,243,0.15);
             box-shadow: 0 6px 15px rgba(33,150,243,0.08);
             transition: all 0.25s ease;
+            border: none; /* 适配button标签，清除默认边框 */
+            cursor: pointer; /* 鼠标悬停显示指针，优化体验 */
         }
 
         .jump-btn:active {
@@ -66,16 +68,27 @@
     </style>
 </head>
 <body>
-    <!-- 只改这里的标题文字，其他全不变 -->
     <h1 class="page-title">地铁跑酷公益直充</h1>
 
     <div class="btn-box">
-        <!-- 跳转核心代码完全没动，确保能跳 -->
-        <a href="http://love.aett.cc/81a3d3cd62bf4a3a98b8cc43e357b61e" class="jump-btn" target="_blank">拉满</a>
-        <a href="http://love.aett.cc/966434d4388943e98539aca486c035f4" class="jump-btn" target="_blank">燃炮系列</a>
+        <!-- 前两个按钮：JS跳转，解决原链接限制 -->
+        <button class="jump-btn" onclick="openLink('http://love.aett.cc/81a3d3cd62bf4a3a98b8cc43e357b61e')">拉满</button>
+        <button class="jump-btn" onclick="openLink('http://love.aett.cc/966434d4388943e98539aca486c035f4')">燃炮系列</button>
+        <!-- 第三个按钮：保留原a标签跳转（正常可用） -->
         <a href="http://live.lovely.pw/b6bc8a325a3b198caefb0e325b4a63d1" class="jump-btn" target="_blank">自定义</a>
     </div>
 
     <div class="hint-text">点击按钮打开链接进不去可以用VPN</div>
+
+    <!-- 跳转核心JS：模拟主动访问，绕过限制 -->
+    <script>
+        function openLink(url) {
+            // 新开窗口跳转，若被拦截则提示手动复制
+            const newWindow = window.open(url, '_blank');
+            if (!newWindow) {
+                alert('跳转被浏览器拦截啦～可手动复制链接访问：\n' + url);
+            }
+        }
+    </script>
 </body>
 </html>
